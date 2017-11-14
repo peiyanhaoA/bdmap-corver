@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hH01GdHk0DPeUT0GWdjy5Ll0MhVVrGFr"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+    <title>Document</title>
+   <style>
+       html,body,#map{
+           width: 100%;
+           height: 100%;
+       }
+   </style>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
+<script>
+    // let ysy = [];
+    var map = new BMap.Map("map");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(118.839323, 32.116994), 15);
+    map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+    map.enableScrollWheelZoom(true);
+    map.setCurrentCity("南京"); 
+    var bs = map.getBounds();   //获取可视区域
+	var bssw = bs.getSouthWest();   //可视区域左下角
+	var bsne = bs.getNorthEast();   //可视区域右上角
+    console.log(bssw)
+    var b = new BMap.Bounds(new BMap.Point(bssw.lng, bssw.lat),new BMap.Point(bsne.lng, bsne.lat));
+    BMapLib.AreaRestriction.setBounds(map, b);
+
+
+    var corver = [
+        {"lng":118.856243,"lat":32.103751},
+        {"lng":118.851949,"lat":32.103476},
+        {"lng":118.850943,"lat":32.106428},
+        {"lng":118.846505,"lat":32.105021},
+        {"lng":118.845571,"lat":32.105694},
+        {"lng":118.846937,"lat":32.106886},
+        {"lng":118.846353,"lat":32.107712},
+        {"lng":118.846645,"lat":32.108343},
+        {"lng":118.846079,"lat":32.109192},
+        {"lng":118.847426,"lat":32.109735},
+        {"lng":118.846568,"lat":32.111444},
+        {"lng":118.843855,"lat":32.110618},
+        {"lng":118.842104,"lat":32.110671},
+        {"lng":118.842167,"lat":32.112078},
+        {"lng":118.84072,"lat":32.112178},
+        {"lng":118.840604,"lat":32.110885},
+        {"lng":118.83816,"lat":32.110618},
+        {"lng":118.83772,"lat":32.112399},
+        {"lng":118.835286,"lat":32.112216},
+        {"lng":118.834836,"lat":32.111092},
+        {"lng":118.833085,"lat":32.111054},
+        {"lng":118.83277,"lat":32.109586},
+        {"lng":118.830354,"lat":32.109425},
+        {"lng":118.82562,"lat":32.109945},
+        {"lng":118.825629,"lat":32.10746},
+        {"lng":118.824209,"lat":32.099936},
+        {"lng":118.819718,"lat":32.099293},
+        {"lng":118.819269,"lat":32.102497},
+        {"lng":118.815541,"lat":32.10265},
+        {"lng":118.81369,"lat":32.102604},
+        {"lng":118.813151,"lat":32.103293},
+        {"lng":118.808651,"lat":32.102383},
+        {"lng":118.807321,"lat":32.103117},
+        {"lng":118.810654,"lat":32.105686},
+        {"lng":118.809756,"lat":32.106443},
+        {"lng":118.80654,"lat":32.107261},
+        {"lng":118.807241,"lat":32.108179},
+        {"lng":118.808822,"lat":32.108225},
+        {"lng":118.808687,"lat":32.111298},
+        {"lng":118.808148,"lat":32.111352},
+        {"lng":118.808283,"lat":32.113302},
+        {"lng":118.80928,"lat":32.11334},
+        {"lng":118.80804,"lat":32.114624},
+        {"lng":118.808588,"lat":32.119999},
+        {"lng":118.810924,"lat":32.120611},
+        {"lng":118.813583,"lat":32.120259},
+        {"lng":118.813915,"lat":32.121031},
+        {"lng":118.814786,"lat":32.121046},
+        {"lng":118.814876,"lat":32.121979},
+        {"lng":118.815217,"lat":32.121972},
+        {"lng":118.815559,"lat":32.120962},
+        {"lng":118.816538,"lat":32.120878},
+        {"lng":118.815981,"lat":32.122239},
+        {"lng":118.817841,"lat":32.122537},
+        {"lng":118.819718,"lat":32.121956},
+        {"lng":118.823446,"lat":32.121635},
+        {"lng":118.824605,"lat":32.120496},
+        {"lng":118.825961,"lat":32.121031},
+        {"lng":118.826985,"lat":32.121069},
+        {"lng":118.827039,"lat":32.120259},
+        {"lng":118.8303,"lat":32.121077},
+        {"lng":118.832052,"lat":32.121184},
+        {"lng":118.832115,"lat":32.122002},
+        {"lng":118.833336,"lat":32.122553},
+        {"lng":118.833965,"lat":32.121627},
+        {"lng":118.834989,"lat":32.123715},
+        {"lng":118.838286,"lat":32.124731},
+        {"lng":118.83825,"lat":32.127246},
+        {"lng":118.839633,"lat":32.127805},
+        {"lng":118.839517,"lat":32.130702},
+        {"lng":118.837217,"lat":32.132215},
+        {"lng":118.839849,"lat":32.133247},
+        {"lng":118.839579,"lat":32.133737},
+        {"lng":118.841304,"lat":32.134639},
+        {"lng":118.840756,"lat":32.135541},
+        {"lng":118.8409,"lat":32.135602},
+        {"lng":118.845014,"lat":32.134402},
+        {"lng":118.854887,"lat":32.129685},
+        {"lng":118.855138,"lat":32.128248},
+        {"lng":118.863573,"lat":32.132926},
+        {"lng":118.871532,"lat":32.122323},
+        {"lng":118.86661,"lat":32.119418},
+        {"lng":118.868343,"lat":32.117262},
+        {"lng":118.871667,"lat":32.114747},
+        {"lng":118.868289,"lat":32.111727},
+        {"lng":118.868954,"lat":32.110236},
+        {"lng":118.862253,"lat":32.110197},
+        {"lng":118.861786,"lat":32.109555},
+        {"lng":118.86334,"lat":32.108324},
+        {"lng":118.856234,"lat":32.103683}
+    ];
+    
+
+    var building = [{
+        "lng": 118.868065,
+        "lat": 32.116761
+    }, {
+        "lng": 118.868541,
+        "lat": 32.116245
+    }, {
+        "lng": 118.867814,
+        "lat": 32.115893
+    }, {
+        "lng": 118.867302,
+        "lat": 32.116429
+    }];
+    var xq = [{
+        "lng": 118.868029,
+        "lat": 32.111803
+    }, {
+        "lng": 118.871676,
+        "lat": 32.114624
+    }, {
+        "lng": 118.86669,
+        "lat": 32.119288
+    }, {
+        "lng": 118.863115,
+        "lat": 32.116589
+    }, {
+        "lng": 118.868038,
+        "lat": 32.111757
+    }];
+    
+
+    function creatCorver (){
+        map.clearOverlays();
+        building.forEach(function(e) {
+            var marker = new BMap.Marker(new BMap.Point(e.lng, e.lat));
+            map.addOverlay(marker)
+        });
+        var strs = [];
+        corver.forEach(function(e) {
+            var string = e.lng + ',' + e.lat;
+            strs.push(string)
+        });
+        var polyg = new BMap.Polygon(xq, {strokeColor:"red",strokeStyle: "dashed", strokeWeight: 2, strokeOpacity: 1, fillOpacity: 0.00000001});
+        map.addOverlay(polyg);
+        var EN = "";
+        for (var o = 0; o < strs.length; o++) {
+            EN += strs[o] + ";"
+        }
+        var E_JW = "170.672126, 39.623555;";            //东
+        var EN_JW = "170.672126, 81.291804;";       //东北角
+        var N_JW = "105.913641, 81.291804;";        //北
+        var NW_JW = "-169.604276,  81.291804;";     //西北角
+        var W_JW = "-169.604276, 38.244136;";       //西
+        var WS_JW = "-169.604276, -68.045308;";     //西南角
+        var S_JW = "114.15563, -68.045308;";            //南
+        var SE_JW = "170.672126, -68.045308 ;";         //东南角
+        //4.添加环形遮罩层
+        var ply1 = new BMap.Polygon(EN + E_JW + SE_JW + S_JW + WS_JW + W_JW + NW_JW + EN_JW + E_JW, { strokeColor: "none", fillColor: "rgb(246,246,246)", strokeOpacity: 1, fillOpacity:0.5}); //建立多边形覆盖物
+        map.addOverlay(ply1);  //遮罩物是半透明的，如果需要纯色可以多添加几层
+        var polygon = new BMap.Polygon(corver, {strokeColor:"blue", strokeWeight: 2, strokeOpacity: 1, fillOpacity: 0.00000001});
+        map.addOverlay(polygon); 
+    }
+    
+    creatCorver();
+    map.addEventListener('click',function(e){
+        console.log(map.getZoom())
+    })
+</script>
+
+
